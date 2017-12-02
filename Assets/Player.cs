@@ -10,22 +10,46 @@ public class Player : MonoBehaviour {
     [SerializeField]
     Rigidbody rb;
 
-	// Use this for initialization
+
+    [SerializeField]
+    float targetPosThreshold = 0.05f;
+
+    Vector3 targetPos;
+	
+    // Use this for initialization
 	void Start () {
-		
+        targetPos = trans.position;
 	}
 	
 	// Update is called once per frame
 	void Update () {
         if (Input.GetKeyUp(KeyCode.UpArrow))
         {
-            
+            targetPos = trans.position + trans.forward;
         }
 	}
 
     private void FixedUpdate()
     {
-        rb.MovePosition(trans.position + trans.forward * Time.deltaTime);
+        if (!nearTargetPos())
+        {
+            rb.MovePosition(trans.position + trans.forward * Time.fixedDeltaTime);
+        }
+        else
+        {
+            targetPos.y = trans.position.y;
+            rb.MovePosition(targetPos);
+        }
+    }
+
+    private bool nearTargetPos()
+    {
+        if(Mathf.Abs(trans.position.x - targetPos.x) < targetPosThreshold 
+            && Mathf.Abs(trans.position.z - targetPos.z) < targetPosThreshold)
+        {
+            return true;
+        }
+        return false;
     }
 
 }
