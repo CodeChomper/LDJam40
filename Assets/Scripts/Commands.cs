@@ -1,14 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Comands : MonoBehaviour {
+public class Commands : MonoBehaviour {
     
     public Queue<string> commands = new Queue<string>();
     Timer stepTimer;
 
     [SerializeField]
     GameObject player;
+
+    [SerializeField]
+    Text commandsText;
 
     Player playerScript;
     bool play = false;
@@ -19,20 +23,17 @@ public class Comands : MonoBehaviour {
         playerScript = player.GetComponent<Player>();
 
         //This will be replaced by buttons pushing commands into stack
-        commands.Enqueue("up");
-        commands.Enqueue("up");
-        commands.Enqueue("right");
-        commands.Enqueue("up");
         stepTimer = gameObject.AddComponent<Timer>();
-        stepTimer.SetTimeOut(1.5f);
+        stepTimer.SetTimeOut(1.2f);
     }
 	
 	// Update is called once per frame
 	void Update () {
+        UpdateCommandText();
+
         if (stepTimer.TimeUp())
         {
             stepTimer.Restart();
-
             if (this.play)
             {
                 string curStep = "";
@@ -50,7 +51,7 @@ public class Comands : MonoBehaviour {
 
                 switch (curStep)
                 {
-                    case "up":
+                    case "forward":
                         playerScript.MoveForward();
                         break;
                     case "right":
@@ -62,9 +63,33 @@ public class Comands : MonoBehaviour {
 		
 	}
 
+    void UpdateCommandText()
+    {
+        if (!commandsText) return;
+        commandsText.text = "";
+
+        if (commands.Count <= 0)
+        {
+            return;
+        }
+        else
+        {
+            foreach(string command in commands)
+            {
+                commandsText.text += command + "\n";
+            }
+        }
+    }
+
     public void Play()
     {
         stepTimer.StartTimer();
         this.play = true;
+    }
+
+    public void MoveForward()
+    {
+        this.commands.Enqueue("forward");
+        
     }
 }
