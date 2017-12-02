@@ -51,11 +51,14 @@ public class Commands : MonoBehaviour {
 
                 switch (curStep)
                 {
-                    case "forward":
+                    case "MoveForward()":
                         playerScript.MoveForward();
                         break;
-                    case "right":
+                    case "TurnRight()":
                         playerScript.TurnRight();
+                        break;
+                    case "TurnLeft()":
+                        playerScript.TurnLeft();
                         break;
                 }
             }
@@ -89,7 +92,22 @@ public class Commands : MonoBehaviour {
 
     public void MoveForward()
     {
-        this.commands.Enqueue("forward");
+        this.commands.Enqueue("MoveForward()");
         
+    }
+
+    public void TurnRight()
+    {
+        this.commands.Enqueue("TurnRight()");
+    }
+
+    public void TurnLeft()
+    {
+        this.commands.Enqueue("TurnLeft()");
+    }
+
+    public void Wait()
+    {
+        this.commands.Enqueue("Wait()");
     }
 }
