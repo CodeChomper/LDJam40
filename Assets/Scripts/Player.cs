@@ -10,28 +10,47 @@ public class Player : MonoBehaviour {
     [SerializeField]
     Rigidbody rb;
 
-
     [SerializeField]
     float targetPosThreshold = 0.05f;
 
+    [SerializeField]
+    float zRot;
+
     Vector3 targetPos;
+
+    public string state = "";
+    
 	
     // Use this for initialization
 	void Start () {
+        
         targetPos = trans.position;
+        zRot = trans.rotation.z;
+        
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyUp(KeyCode.UpArrow))
-        {
-            targetPos = trans.position + trans.forward;
-        }
 	}
+
+    public void MoveForward()
+    {
+        targetPos = trans.position + trans.forward;
+    }
+
+    public void TurnRight()
+    {
+        zRot += 90;
+    }
+
+    public void TurnLeft()
+    {
+        zRot -= 90;
+    }
 
     private void FixedUpdate()
     {
-        if (!nearTargetPos())
+        if (!NearTargetPos() && state == "moveForward")
         {
             rb.MovePosition(trans.position + trans.forward * Time.fixedDeltaTime);
         }
@@ -40,9 +59,20 @@ public class Player : MonoBehaviour {
             targetPos.y = trans.position.y;
             rb.MovePosition(targetPos);
         }
+
+        if (!NearRotation())
+        {
+            rb.MoveRotation(Quaternion.Euler(0, zRot - rb.rotation.y, 0));
+        }
     }
 
-    private bool nearTargetPos()
+
+    private bool NearRotation()
+    {
+        return false;
+    }
+
+    private bool NearTargetPos()
     {
         if(Mathf.Abs(trans.position.x - targetPos.x) < targetPosThreshold 
             && Mathf.Abs(trans.position.z - targetPos.z) < targetPosThreshold)
