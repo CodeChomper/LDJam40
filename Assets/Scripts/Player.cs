@@ -50,7 +50,7 @@ public class Player : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if (!NearTargetPos() && state == "moveForward")
+        if (!NearTargetPos())
         {
             rb.MovePosition(trans.position + trans.forward * Time.fixedDeltaTime);
         }

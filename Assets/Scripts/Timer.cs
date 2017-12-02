@@ -41,7 +41,6 @@ public class Timer : MonoBehaviour {
             {
                 this.start = false;
                 this.timeUp = true;
-
             }
         }
 		
