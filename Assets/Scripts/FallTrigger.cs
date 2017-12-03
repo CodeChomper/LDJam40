@@ -20,8 +20,7 @@ public class FallTrigger : MonoBehaviour {
         if(other.tag == "Player")
         {
             print("Player fell to their death");
-            
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            LevelController.Restart();
         }
     }
 }

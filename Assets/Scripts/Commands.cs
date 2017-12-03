@@ -7,12 +7,16 @@ public class Commands : MonoBehaviour {
     
     public Queue<string> commands = new Queue<string>();
     Timer stepTimer;
+    Timer restartTimer;
 
     [SerializeField]
     GameObject player;
 
     [SerializeField]
     Text commandsText;
+
+    [SerializeField]
+    GameObject btnGroup;
 
     Player playerScript;
     bool play = false;
@@ -24,13 +28,19 @@ public class Commands : MonoBehaviour {
 
         //This will be replaced by buttons pushing commands into stack
         stepTimer = gameObject.AddComponent<Timer>();
-        stepTimer.SetTimeOut(1.2f);
+        stepTimer.SetTimeOut(0.75f);
     }
 	
 	// Update is called once per frame
 	void Update () {
         UpdateCommandText();
-
+        if (restartTimer)
+        {
+            if (restartTimer.TimeUp())
+            {
+                LevelController.Restart();
+            }
+        }
         if (stepTimer.TimeUp())
         {
             stepTimer.Restart();
@@ -46,6 +56,9 @@ public class Commands : MonoBehaviour {
                 }
                 else
                 {
+                    restartTimer = gameObject.AddComponent<Timer>();
+                    restartTimer.SetTimeOut(2);
+                    restartTimer.StartTimer();
                     this.play = false;
                 }
 
@@ -88,6 +101,8 @@ public class Commands : MonoBehaviour {
     {
         stepTimer.StartTimer();
         this.play = true;
+        btnGroup.SetActive(false);
+        LevelController.levelIsPlaying = true;
     }
 
     public void MoveForward()

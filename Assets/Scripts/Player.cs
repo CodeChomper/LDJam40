@@ -16,6 +16,9 @@ public class Player : MonoBehaviour {
     [SerializeField]
     float zRot;
 
+    [SerializeField]
+    float speed = 1.75f;
+
     Vector3 targetPos;
 
     public string state = "";
@@ -52,7 +55,7 @@ public class Player : MonoBehaviour {
     {
         if (!NearTargetPos())
         {
-            rb.MovePosition(trans.position + trans.forward * Time.fixedDeltaTime);
+            rb.MovePosition(trans.position + trans.forward * Time.fixedDeltaTime * speed);
         }
         else
         {
