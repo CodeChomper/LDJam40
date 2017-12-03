@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public static class LevelController{
     [SerializeField]
     private static string[] levels = new string[] {
+        "Intro",
         "Tut1",
         "Tut2",
         "Tut3",
