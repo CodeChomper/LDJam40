@@ -25,8 +25,6 @@ public class Commands : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         playerScript = player.GetComponent<Player>();
-
-        //This will be replaced by buttons pushing commands into stack
         stepTimer = gameObject.AddComponent<Timer>();
         stepTimer.SetTimeOut(0.75f);
     }
@@ -99,6 +97,7 @@ public class Commands : MonoBehaviour {
 
     public void Play()
     {
+        LevelController.moves = commands.Count;
         stepTimer.StartTimer();
         this.play = true;
         btnGroup.SetActive(false);
