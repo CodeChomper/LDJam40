@@ -18,6 +18,9 @@ public class Commands : MonoBehaviour {
     [SerializeField]
     GameObject btnGroup;
 
+    [SerializeField]
+    AudioSource restartSound;
+
     Player playerScript;
     bool play = false;
    
@@ -54,6 +57,7 @@ public class Commands : MonoBehaviour {
                 }
                 else
                 {
+                    if(!player.GetComponent<Player>().reachedGoal) restartSound.Play();
                     restartTimer = gameObject.AddComponent<Timer>();
                     restartTimer.SetTimeOut(2);
                     restartTimer.StartTimer();

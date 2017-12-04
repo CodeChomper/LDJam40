@@ -20,7 +20,7 @@ public class Credits : MonoBehaviour {
         "Well you blew it!",
         "I am no smarter than..",
         "One, Two, Three, Four, or Five.",
-        "Now the are going to send me to reprogramming again!"
+        "Now they are going to send me to reprogramming again!"
     };
 
     string[] creditText = new string[]

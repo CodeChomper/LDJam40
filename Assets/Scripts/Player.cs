@@ -19,6 +19,14 @@ public class Player : MonoBehaviour {
     [SerializeField]
     float speed = 1.75f;
 
+    [SerializeField]
+    AudioSource botWalk;
+
+    [SerializeField]
+    AudioSource botTurn;
+
+    public bool reachedGoal = false;
+
     Vector3 targetPos;
 
     public string state = "";
@@ -39,16 +47,19 @@ public class Player : MonoBehaviour {
     public void MoveForward()
     {
         targetPos = trans.position + trans.forward;
+        botWalk.Play();
     }
 
     public void TurnRight()
     {
         zRot += 90;
+        botTurn.Play();
     }
 
     public void TurnLeft()
     {
         zRot -= 90;
+        botTurn.Play();
     }
 
     private void FixedUpdate()

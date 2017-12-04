@@ -5,6 +5,11 @@ using UnityEngine;
 public class Saw : MonoBehaviour {
     Animation anim;
     Timer restartTimer;
+    [SerializeField]
+    AudioSource botDeath;
+
+    [SerializeField]
+    AudioSource sawSound;
 
 	// Use this for initialization
 	void Start () {
@@ -15,6 +20,7 @@ public class Saw : MonoBehaviour {
 	void Update () {
 		if(!anim.isPlaying && LevelController.levelIsPlaying)
         {
+            sawSound.Play();
             anim.Play();
         }
         if(restartTimer && restartTimer.TimeUp())
@@ -29,6 +35,7 @@ public class Saw : MonoBehaviour {
         {
             GameObject player = GameObject.Find("Player");
             player.SetActive(false);
+            botDeath.Play();
             restartTimer = gameObject.AddComponent<Timer>();
             restartTimer.SetTimeOut(1);
             restartTimer.StartTimer();

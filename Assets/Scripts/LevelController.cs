@@ -14,8 +14,10 @@ public static class LevelController{
         "Tut2",
         "Tut3",
         "Tut4",
+        "Tut5",
         "Level01",
         "Level02",
+        "Level03",
         "Credits"
     };
     private static string levelName;
@@ -31,10 +33,17 @@ public static class LevelController{
         5,  //Tut2
         12, //Tut3
         6,  //Tut4
-        11,  //Level01
+        5,  //Tut5
+        11, //Level01
         8,  //Level02
+        12, //Level03
         0   //Credits
     };
+
+    public static int GetPar()
+    {
+        return levelPars[curLevel];
+    }
 
     static LevelController()
     {
