@@ -261,6 +261,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daf9e4277ddaad142a67ec66e938514c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  botDeathAnim: {fileID: 4030884396217224, guid: f2ed31d91cd86c7458907f48160abc5e,
+    type: 2}
   ballLanding: {fileID: 82474111200162110}
 --- !u!135 &135380642972694498
 SphereCollider:

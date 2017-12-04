@@ -812,7 +812,7 @@ Prefab:
       objectReference: {fileID: 7400000, guid: 409a056dc6991874f8d9ba439be6d2e7, type: 2}
     - target: {fileID: 4987733051181904, guid: 3085ec149d3dd0541ad84b752cf55faf, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -525.2658
+      value: -1440
       objectReference: {fileID: 0}
     - target: {fileID: 4987733051181904, guid: 3085ec149d3dd0541ad84b752cf55faf, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y

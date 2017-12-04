@@ -8,12 +8,15 @@ public class Laser : MonoBehaviour {
     AudioSource botDeath;
 
     [SerializeField]
+    Transform botDeatAnim;
+
+    [SerializeField]
     float speed = 2;
-    
-	// Use this for initialization
-	void Start () {
-        
-	}
+    GameObject player;
+    // Use this for initialization
+    void Start () {
+        player = GameObject.Find("Player");
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -25,7 +28,8 @@ public class Laser : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            GameObject player = GameObject.Find("Player");
+            
+            Instantiate(botDeatAnim, player.transform.position, player.transform.rotation);
             player.SetActive(false);
             botDeath.Play();
             restartTimer = gameObject.AddComponent<Timer>();

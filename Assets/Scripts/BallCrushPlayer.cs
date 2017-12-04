@@ -6,6 +6,9 @@ public class BallCrushPlayer : MonoBehaviour {
     Timer restartTimer;
 
     [SerializeField]
+    Transform botDeathAnim;
+
+    [SerializeField]
     AudioSource ballLanding;
     bool landingSoundHasPlayed = false;
     // Use this for initialization
@@ -30,6 +33,7 @@ public class BallCrushPlayer : MonoBehaviour {
         if (other.tag == "Player")
         {
             GameObject player = GameObject.Find("Player");
+            Instantiate(botDeathAnim, player.transform.position, player.transform.rotation);
             player.SetActive(false);
             restartTimer = gameObject.AddComponent<Timer>();
             restartTimer.SetTimeOut(1);

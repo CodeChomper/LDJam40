@@ -9,6 +9,9 @@ public class Saw : MonoBehaviour {
     AudioSource botDeath;
 
     [SerializeField]
+    Transform botDeathAnim;
+
+    [SerializeField]
     AudioSource sawSound;
 
 	// Use this for initialization
@@ -34,6 +37,7 @@ public class Saw : MonoBehaviour {
         if (other.tag == "Player")
         {
             GameObject player = GameObject.Find("Player");
+            Instantiate(botDeathAnim, player.transform.position, player.transform.rotation);
             player.SetActive(false);
             botDeath.Play();
             restartTimer = gameObject.AddComponent<Timer>();
