@@ -78,6 +78,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Ball.cs" />
+    <Compile Include="Assets\BallCrushPlayer.cs" />
+    <Compile Include="Assets\BallDropper.cs" />
     <Compile Include="Assets\Scripts\AIScore.cs" />
     <Compile Include="Assets\Scripts\Commands.cs" />
     <Compile Include="Assets\Scripts\Credits.cs" />
