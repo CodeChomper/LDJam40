@@ -14,6 +14,7 @@ public static class LevelController{
         "Tut2",
         "Tut3",
         "Tut4",
+        "Level01",
         "Credits"
     };
     private static string levelName;
@@ -29,6 +30,7 @@ public static class LevelController{
         5,  //Tut2
         12, //Tut3
         6,  //Tut4
+        11,  //Level01
         0   //Credits
     };
 

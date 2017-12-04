@@ -78,9 +78,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\AIScore.cs" />
-    <Compile Include="Assets\Credits.cs" />
+    <Compile Include="Assets\Scripts\AIScore.cs" />
     <Compile Include="Assets\Scripts\Commands.cs" />
+    <Compile Include="Assets\Scripts\Credits.cs" />
     <Compile Include="Assets\Scripts\FallTrigger.cs" />
     <Compile Include="Assets\Scripts\Goal.cs" />
     <Compile Include="Assets\Scripts\IntroText.cs" />
