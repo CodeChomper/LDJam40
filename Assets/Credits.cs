@@ -77,7 +77,7 @@ public class Credits : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        if(LevelController.TotalScore() >= 2f)
+        if(LevelController.TotalScore() >= 3f)
         {
             winMessage.CopyTo(intro, 0);
         }

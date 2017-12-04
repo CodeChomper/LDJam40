@@ -78,6 +78,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\AIScore.cs" />
     <Compile Include="Assets\Credits.cs" />
     <Compile Include="Assets\Scripts\Commands.cs" />
     <Compile Include="Assets\Scripts\FallTrigger.cs" />
